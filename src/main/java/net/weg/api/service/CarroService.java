@@ -1,7 +1,8 @@
 package net.weg.api.service;
 
+import lombok.AllArgsConstructor;
 import net.weg.api.model.Carro;
-import net.weg.api.repository.CarroDAO;
+import net.weg.api.repository.CarroRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,11 +10,7 @@ import java.util.Collection;
 @AllArgsConstructor
 @Service
 public class CarroService {
-    private CarroRepository
-    carroRepository;
-
-
-
+    private CarroRepository carroRepository;
 
     public Collection<Carro> buscarTodos(){
         return carroRepository.findAll();
