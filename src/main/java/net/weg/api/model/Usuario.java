@@ -13,7 +13,6 @@ import java.sql.SQLException;
 @Table(name = "usuario")
 
 public class Usuario {
-
     @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
            private Integer id;
@@ -21,7 +20,7 @@ public class Usuario {
     private String usuario;
     private String senha;
     private Integer idade;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Carro carro;
 
 
