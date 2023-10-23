@@ -1,27 +1,26 @@
 package net.weg.api.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-@Data
-@AllArgsConstructor
+import java.util.Set;
+
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
-@Table(name = "usuario")
-
+@Table(name = "tb_usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
     @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-           private Integer id;
-   @Column(name = "username", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = "username", unique = true, nullable = false)
     private String usuario;
     private String senha;
     private Integer idade;
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    private Carro carro;
-
-
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private Set<Endereco> endereco;
 }

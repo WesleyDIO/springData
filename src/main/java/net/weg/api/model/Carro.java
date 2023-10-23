@@ -20,4 +20,6 @@ public class Carro {
     private String modelo;
     private Double preco;
     private Integer ano;
+    @OneToOne(mappedBy = "veiculo")
+    private Seguro seguro;
 }
