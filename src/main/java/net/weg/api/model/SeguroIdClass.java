@@ -1,20 +1,18 @@
 package net.weg.api.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Table(name = "tb_habilitacao")
+public class SeguroIdClass {
 
-public class Habilitacao {
-    @Id
+    private Integer seguradoraId;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private Long registro, cpf;
-    private String orgaoEmissor;
+    private Integer seguroId;
+
 }

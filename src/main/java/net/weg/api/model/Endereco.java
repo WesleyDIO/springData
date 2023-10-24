@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "tb_endereco")
 public class Endereco {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String rua, bairro;
     private Integer numero;
