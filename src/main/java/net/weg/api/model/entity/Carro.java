@@ -1,12 +1,10 @@
-package net.weg.api.model;
+package net.weg.api.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.weg.api.model.dto.CarroCadastroDTO;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 @Data
 @NoArgsConstructor
 @Entity
@@ -15,6 +13,7 @@ public class Carro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String placa;
     private String marca;
     private String cor;
     private String modelo;
@@ -22,4 +21,12 @@ public class Carro {
     private Integer ano;
     @OneToOne(mappedBy = "veiculo")
     private Seguro seguro;
+
+    public Carro(CarroCadastroDTO carroCadastroDTO){
+        this.ano = carroCadastroDTO.getAno();
+        this.marca = carroCadastroDTO.getMarca();
+        this.cor = carroCadastroDTO.getCor();
+        this.modelo = carroCadastroDTO.getModelo();
+        this.preco = carroCadastroDTO.getPreco();
+    }
 }

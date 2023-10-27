@@ -1,13 +1,12 @@
 package net.weg.api.service;
 
 import lombok.AllArgsConstructor;
-import net.weg.api.model.Cliente;
+import net.weg.api.model.entity.Cliente;
 import net.weg.api.repository.ClienteRepository;
 import net.weg.api.repository.HabilitacaoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor

@@ -1,8 +1,7 @@
 package net.weg.api.service;
 
 import lombok.AllArgsConstructor;
-import net.weg.api.model.Endereco;
-import net.weg.api.model.Habilitacao;
+import net.weg.api.model.entity.Endereco;
 import net.weg.api.repository.EnderecoRepository;
 import org.springframework.stereotype.Service;
 

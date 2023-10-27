@@ -1,4 +1,4 @@
-package net.weg.api.model;
+package net.weg.api.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,16 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tb_endereco")
-public class Endereco {
+@Data
+@Table(name = "tb_habilitacao")
+
+public class Habilitacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String rua, bairro;
-    private Integer numero;
-
-
+    private Long registro, cpf;
+    private String orgaoEmissor;
 }

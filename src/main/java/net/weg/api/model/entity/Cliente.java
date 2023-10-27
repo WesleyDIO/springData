@@ -1,11 +1,8 @@
-package net.weg.api.model;
+package net.weg.api.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Set;
 
 @Data

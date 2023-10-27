@@ -1,10 +1,8 @@
 package net.weg.api.service;
 
 import lombok.AllArgsConstructor;
-import net.weg.api.model.Habilitacao;
-import net.weg.api.model.Seguradora;
+import net.weg.api.model.entity.Habilitacao;
 import net.weg.api.repository.HabilitacaoRepository;
-import net.weg.api.repository.SeguradoraRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
