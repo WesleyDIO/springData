@@ -2,7 +2,7 @@ package net.weg.api.controller;
 
 import lombok.AllArgsConstructor;
 import net.weg.api.model.dto.CarroCadastroDTO;
-import net.weg.api.model.dto.CarrpEdicaoDTO;
+import net.weg.api.model.dto.CarroEdicaoDTO;
 import net.weg.api.model.entity.Carro;
 import net.weg.api.service.CarroService;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 @AllArgsConstructor
@@ -71,7 +70,7 @@ public class CarroController {
     }
 
     @PutMapping
-    public ResponseEntity<Carro> atualizar(@RequestBody CarrpEdicaoDTO carroDTO){
+    public ResponseEntity<Carro> atualizar(@RequestBody CarroEdicaoDTO carroDTO){
         try {
             return new ResponseEntity<>(carroService.editar(carroDTO), HttpStatus.CREATED);
         }catch (Exception e){

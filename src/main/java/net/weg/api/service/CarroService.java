@@ -2,7 +2,7 @@ package net.weg.api.service;
 
 import lombok.AllArgsConstructor;
 import net.weg.api.model.dto.CarroCadastroDTO;
-import net.weg.api.model.dto.CarrpEdicaoDTO;
+import net.weg.api.model.dto.CarroEdicaoDTO;
 import net.weg.api.model.entity.Carro;
 import net.weg.api.repository.CarroRepository;
 import org.springframework.beans.BeanUtils;
@@ -47,7 +47,7 @@ public class CarroService {
 
     }
 
-    public Carro editar( CarrpEdicaoDTO carroDTO) throws Exception {
+    public Carro editar( CarroEdicaoDTO carroDTO) throws Exception {
         if (!carroRepository.existsById(carroDTO.getId())){
             throw new Exception("Não foi encontrado nenhum carro com o id " + carroDTO.getId() + ".");
         }
