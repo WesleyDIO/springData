@@ -8,6 +8,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import net.weg.api.model.entity.Carro;
+import net.weg.api.model.entity.Seguro;
 import net.weg.api.service.CarroService;
 
 
@@ -23,7 +24,9 @@ public class MeusAutomoveis extends VerticalLayout {
 
         hl.add(new Button("Novo Carro", e -> cadastro.open()));
         add(hl);
-        this.add(new Grid<>(Carro.class));
+        Grid<Carro> veiculos = new Grid<>(Carro.class);
+        veiculos.setItems(carroService.buscarTodos());
+        add(veiculos);
 
     }
 }

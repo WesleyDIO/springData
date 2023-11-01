@@ -1,6 +1,7 @@
 package net.weg.api.controller;
 
 import lombok.AllArgsConstructor;
+import net.weg.api.model.dto.SeguroCadastroDTO;
 import net.weg.api.model.entity.Seguro;
 import net.weg.api.service.SeguroService;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +17,13 @@ public class SeguroController {
     }
 
     @PostMapping
-    public void inserir(@RequestBody Seguro seguro){
-        seguroService.salvar(seguro);
+    public void inserir(@RequestBody SeguroCadastroDTO seguroCadastroDTO){
+        seguroService.salvar(seguroCadastroDTO);
     }
 
     @PutMapping
-    public void atualizar(@RequestBody Seguro seguro){
-        seguroService.salvar(seguro);
+    public void atualizar(@RequestBody SeguroCadastroDTO seguroCadastroDTO){
+        seguroService.salvar(seguroCadastroDTO);
     }
 
     @GetMapping("/{id}")

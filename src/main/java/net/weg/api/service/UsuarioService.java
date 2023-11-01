@@ -10,7 +10,7 @@ import java.util.Collection;
 
 @Service
 @AllArgsConstructor
-public class ClienteService {
+public class UsuarioService {
 
     private ClienteRepository clienteRepository;
     private HabilitacaoRepository habilitacaoRepository;

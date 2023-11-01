@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "cliente")
 
-public class    Cliente extends Usuario{
+public class Cliente extends Usuario{
     @OneToMany
     private Set<Carro> carro;
     @OneToOne(cascade = CascadeType.PERSIST)

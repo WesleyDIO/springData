@@ -15,7 +15,7 @@ import net.weg.api.service.CarroService;
 public class CadastroCarro extends FormLayout {
 
     private final CarroService carroService;
-    public CadastroCarro( CarroService carroService, Dialog dialog) {
+    CadastroCarro( CarroService carroService, Dialog dialog) {
         this.carroService = carroService;
         TextField placa = new TextField("placa");
         TextField marca = new TextField("marca");
