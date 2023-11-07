@@ -16,7 +16,7 @@ import java.util.List;
 public class CarroService {
     private CarroRepository carroRepository;
 
-    public Collection<Carro> buscarTodos(){
+    public List<Carro> buscarTodos(){
         return carroRepository.findAll();
     }
 

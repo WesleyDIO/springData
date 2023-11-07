@@ -27,6 +27,7 @@ public class MeusSeguros extends VerticalLayout{
         hl.add(new Button("Novo Seguro", e -> cadastro.open()));
         add(hl);
         Grid<Seguro> seguros = new Grid<>(Seguro.class);
+        seguros.setColumnOrder();
         seguros.setItems(seguroService.buscarTodos());
         add(seguros);
 

@@ -1,11 +1,16 @@
 package net.weg.api.view;
 
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.RouterLink;
+
+import java.awt.*;
 
 public class NavBarApp extends AppLayout{
 
@@ -19,7 +24,11 @@ public class NavBarApp extends AppLayout{
 
         Tabs tabs = getTabs();
 
-        addToNavbar(title, tabs);
+       Button cadastro = new Button("Cadastre-se", event->{
+            UI.getCurrent().navigate("/cadastro-usuario");
+        });
+       cadastro.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        addToNavbar(title, tabs, cadastro);
     }
 
     private Tabs getTabs() {
@@ -29,7 +38,7 @@ public class NavBarApp extends AppLayout{
                 createTab("Inicio"),
                 createTab("Meus Seguros", MeusSeguros.class),
                 createTab("Meus Automóveis", MeusAutomoveis.class),
-                createTab("Seguradoras"),
+                createTab("Seguradoras", Seguradoras.class),
                 createTab("Perfil")
 
         );

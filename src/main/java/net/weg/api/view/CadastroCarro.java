@@ -12,10 +12,10 @@ import net.weg.api.model.dto.CarroCadastroDTO;
 import net.weg.api.service.CarroService;
 
 
-public class CadastroCarro extends FormLayout {
+public class CadastroCarro extends Dialog {
 
     private final CarroService carroService;
-    CadastroCarro( CarroService carroService, Dialog dialog) {
+    CadastroCarro( CarroService carroService) {
         this.carroService = carroService;
         TextField placa = new TextField("placa");
         TextField marca = new TextField("marca");
@@ -33,11 +33,11 @@ public class CadastroCarro extends FormLayout {
                 }catch (Exception e){
                     throw new RuntimeException(e);
                 }
-                dialog.close();
+                this.close();
             }
         });
-        Button cancelar = new Button("Cancelar", e -> dialog.close());
-        dialog.getFooter().add(cancelar, salvar);
+        Button cancelar = new Button("Cancelar", e -> this.close());
+        this.getFooter().add(cancelar, salvar);
         add(placa, marca, cor, modelo, ano, preco);
     }
 }

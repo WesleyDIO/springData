@@ -2,6 +2,7 @@ package net.weg.api.view;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
@@ -23,7 +24,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Route(value="/cadastro-usuario", layout = NavBarApp.class)
-public class CadastroUsuario extends FormLayout {
+public class CadastroUsuario extends VerticalLayout {
 
     private TextField usuario = new TextField("Usuario");
     private TextField nome = new TextField("Nome");
@@ -42,6 +43,10 @@ public class CadastroUsuario extends FormLayout {
 
 
     CadastroUsuario(UsuarioService usuarioService){
+        FormLayout formLayout = new FormLayout();
+        this.setHorizontalComponentAlignment(
+                Alignment.CENTER,formLayout
+        );
         this.usuarioService = usuarioService;
         cadastroEndereco.add(new CadastroEndereco(gridEnderecos,cadastroEndereco));
         novoEndereco = new Button("Novo Endereco", e -> cadastroEndereco.open());
@@ -69,12 +74,14 @@ public class CadastroUsuario extends FormLayout {
                 notification.open();
             }
         });
+        salvar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         cancelar = new Button("Cancelar", event -> new UI().navigate("/"));
 //        var vertical = new VerticalLayout(new HorizontalLayout(nome, sobrenome), new HorizontalLayout(senha, confirmacaoSenha),
 //                new HorizontalLayout(idade,usuario),novoEndereco, gridEnderecos, new HorizontalLayout(cancelar, salvar));
-        this.setColspan(gridEnderecos,2);
-        this.setColspan(novoEndereco,2);
-        add(nome,sobrenome,usuario,idade,senha,confirmacaoSenha,novoEndereco,gridEnderecos,cadastroEndereco,cancelar,salvar);
-
+        formLayout.setColspan(gridEnderecos,2);
+        formLayout.setColspan(novoEndereco,2);
+        formLayout.setMaxWidth("1000px");
+        formLayout.add(nome,sobrenome,usuario,idade,senha,confirmacaoSenha,novoEndereco,gridEnderecos,cadastroEndereco,cancelar,salvar);
+        add(formLayout);
     }
 }
