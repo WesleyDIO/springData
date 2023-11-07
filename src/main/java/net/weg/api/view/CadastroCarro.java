@@ -33,7 +33,7 @@ public class CadastroCarro extends Dialog {
                 }catch (Exception e){
                     throw new RuntimeException(e);
                 }
-                this.close();
+                close();
             }
         });
         Button cancelar = new Button("Cancelar", e -> this.close());
