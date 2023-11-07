@@ -13,18 +13,20 @@ import net.weg.api.model.entity.Endereco;
 
 public class CadastroEndereco extends FormLayout {
 
-    private TextField rua;
-    private TextField bairro;
-    private IntegerField numero;
+    private TextField rua = new TextField("Rua");
+    private TextField bairro = new TextField("Bairro");
+    private IntegerField numero = new IntegerField("Numero");
 
     private Button salvar;
     private Button cancelar;
 
     CadastroEndereco(Grid<EnderecoCadastroDTO> gridEndereco, Dialog dialog){
         salvar = new Button("Salvar", event -> {
-            gridEndereco.setItems(new EnderecoCadastroDTO(rua.getValue(),bairro.getValue(),numero.getValue()));
+            gridEndereco.getListDataView().addItem(new EnderecoCadastroDTO(rua.getValue(),bairro.getValue(),numero.getValue()));
             dialog.close();
         });
         cancelar = new Button("Cancelar", event -> dialog.close());
+        dialog.getFooter().add(cancelar,salvar);
+        add(rua,bairro,numero);
     }
 }

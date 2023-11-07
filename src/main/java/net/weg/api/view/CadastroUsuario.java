@@ -1,41 +1,75 @@
 package net.weg.api.view;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.Route;
 import net.weg.api.model.dto.EnderecoCadastroDTO;
 import net.weg.api.model.dto.UsuarioCadastroDTO;
 import net.weg.api.model.entity.Endereco;
 import net.weg.api.service.UsuarioService;
+import org.springframework.beans.BeanUtils;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Route(value="/cadastro-usuario", layout = NavBarApp.class)
 public class CadastroUsuario extends FormLayout {
 
-    private TextField usuario;
-    private PasswordField senha;
-    private IntegerField idade;
-    private Grid<EnderecoCadastroDTO> gridEnderecos;
-    private Dialog cadastroEndereco;
+    private TextField usuario = new TextField("Usuario");
+    private TextField nome = new TextField("Nome");
+    private TextField sobrenome = new TextField("Sobrenome");
+
+    private PasswordField senha = new PasswordField("Senha");
+    private PasswordField confirmacaoSenha = new PasswordField("Confirmar senha");
+    private IntegerField idade = new IntegerField("Idade");
+    private Grid<EnderecoCadastroDTO> gridEnderecos = new Grid<>(EnderecoCadastroDTO.class);
+    private Dialog cadastroEndereco = new Dialog();
     private UsuarioService usuarioService;
 
     private Button novoEndereco;
     private Button salvar;
     private Button cancelar;
 
-    CadastroUsuario(){
+
+    CadastroUsuario(UsuarioService usuarioService){
+        this.usuarioService = usuarioService;
         cadastroEndereco.add(new CadastroEndereco(gridEnderecos,cadastroEndereco));
         novoEndereco = new Button("Novo Endereco", e -> cadastroEndereco.open());
-        salvar = new Button("Salvar", e ->{
-            Set<Endereco> enderecos = new HashSet<>();
-            usuarioService.salvar(new UsuarioCadastroDTO(usuario.getValue(),senha.getValue(),idade.getValue(),));
+        salvar = new Button("Salvar", e -> {
+
+            Notification notification = new Notification();
+            notification.setDuration(3000);
+            try {
+                if (senha.getValue().equals(confirmacaoSenha.getValue())){
+                    throw new RuntimeException();
+                }
+                Set<Endereco> enderecos = new HashSet<>();
+                gridEnderecos.getListDataView().getItems().forEach(enderecoCadastroDTO -> {
+                    Endereco endereco = new Endereco();
+                    BeanUtils.copyProperties(enderecoCadastroDTO, endereco);
+                    enderecos.add(endereco);
+                });
+                usuarioService.salvar(new UsuarioCadastroDTO(nome.getValue(), sobrenome.getValue(),usuario.getValue(), senha.getValue(), idade.getValue(), enderecos));
+                notification.setText("Usuario cadastrado com sucesso!");
+                notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+            }catch (Exception exception){
+                notification.setText("Erro no cadastro do usuario!");
+                notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+            } finally {
+                notification.open();
+            }
         });
-        add(usuario,senha,idade,novoEndereco,gridEnderecos,cadastroEndereco);
+        cancelar = new Button("Cancelar", event -> new UI().navigate("/"));
+
+        add(nome, sobrenome, usuario,senha, confirmacaoSenha,idade,novoEndereco,gridEnderecos,cadastroEndereco, salvar,cancelar);
 
     }
 }

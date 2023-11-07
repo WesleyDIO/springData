@@ -34,6 +34,7 @@ public class CadastroSeguro extends FormLayout {
         veiculoSelect.setLabel("Veículo");
         veiculoSelect.setItems(carroService.buscarTodos());
         Select<Cliente> usuarioSelect = new Select<>();
+//        usuarioSelect.setItemLabelGenerator(item -> toString());
         usuarioSelect.setLabel("Usuário");
         usuarioSelect.setItems(usuarioService.buscarTodos());
         Button salvar = new Button("Salvar", new ComponentEventListener<ClickEvent<Button>>() {

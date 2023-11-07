@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/seguro")
 public class SeguroController {
     private SeguroService seguroService;
-    @DeleteMapping("/{id}")
-    public void remover(@PathVariable Integer id){
-        seguroService.deletar(id);
+    @DeleteMapping("/{seguroId}/{seguradoraId}")
+    public void remover(@PathVariable Integer segurooId, @PathVariable Integer seguradoraId){
+        seguroService.deletar(segurooId,seguradoraId);
     }
 
     @PostMapping
@@ -27,8 +27,8 @@ public class SeguroController {
     }
 
     @GetMapping("/{id}")
-    public void buscarUm(@PathVariable Integer id){
-        seguroService.buscarUm(id);
+    public void buscarUm(@PathVariable Integer id, @PathVariable Integer seguradoraId){
+        seguroService.buscarUm(id,seguradoraId);
     }
 
 }

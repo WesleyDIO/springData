@@ -8,7 +8,8 @@ import java.util.Set;
 @AllArgsConstructor
 @Data
 public class UsuarioCadastroDTO {
-
+    private String nome;
+    private String sobrenome;
     private String usuario;
     private String senha;
     private Integer idade;

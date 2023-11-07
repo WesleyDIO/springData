@@ -20,7 +20,7 @@ public class Seguradora {
     private String nome;
     @OneToOne
     private Endereco endereco;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Cliente> clientes;
 
 

@@ -11,11 +11,16 @@ import java.util.Set;
 @Entity
 @Table(name = "cliente")
 
-public class Cliente extends Usuario{
-    @OneToMany
+public class Cliente extends Usuario {
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Carro> carro;
-    @OneToOne(cascade = CascadeType.PERSIST)
-    private Habilitacao habilitacao;
-    @OneToMany(mappedBy = "cliente")
+    //    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//    private Habilitacao habilitacao;
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
     private Set<Seguro> seguros;
+
+    @Override
+    public String toString() {
+      return super.toString();
+    }
 }

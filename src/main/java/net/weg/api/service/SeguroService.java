@@ -3,6 +3,7 @@ package net.weg.api.service;
 import lombok.AllArgsConstructor;
 import net.weg.api.model.dto.SeguroCadastroDTO;
 import net.weg.api.model.entity.Seguro;
+import net.weg.api.model.entity.SeguroId;
 import net.weg.api.repository.SeguroRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -20,12 +21,12 @@ public class SeguroService {
         seguroRepository.save(seguro);
     }
 
-    public void deletar(Integer id){
-        seguroRepository.deleteById(id);
+    public void deletar(Integer id, Integer seguradoraId){
+        seguroRepository.deleteById(new SeguroId(id,seguradoraId));
     }
 
-    public Seguro buscarUm(Integer id){
-        return seguroRepository.findById(id).get();
+    public Seguro buscarUm(Integer id, Integer seguradoraId){
+        return seguroRepository.findById(new SeguroId(id,seguradoraId)).get();
     }
 
     public List<Seguro> buscarTodos(){
