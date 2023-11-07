@@ -7,6 +7,8 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
@@ -68,8 +70,11 @@ public class CadastroUsuario extends FormLayout {
             }
         });
         cancelar = new Button("Cancelar", event -> new UI().navigate("/"));
-
-        add(nome, sobrenome, usuario,senha, confirmacaoSenha,idade,novoEndereco,gridEnderecos,cadastroEndereco, salvar,cancelar);
+//        var vertical = new VerticalLayout(new HorizontalLayout(nome, sobrenome), new HorizontalLayout(senha, confirmacaoSenha),
+//                new HorizontalLayout(idade,usuario),novoEndereco, gridEnderecos, new HorizontalLayout(cancelar, salvar));
+        this.setColspan(gridEnderecos,2);
+        this.setColspan(novoEndereco,2);
+        add(nome,sobrenome,usuario,idade,senha,confirmacaoSenha,novoEndereco,gridEnderecos,cadastroEndereco,cancelar,salvar);
 
     }
 }
