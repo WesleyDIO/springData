@@ -50,14 +50,14 @@ public class CarroService implements IService<Carro,Integer> {
 
     }
 
-    public Carro editar(IDTO dto) throws Exception {
+    public void editar(IDTO dto) throws Exception {
         CarroEdicaoDTO carroDTO = (CarroEdicaoDTO) dto;
         if (!carroRepository.existsById(carroDTO.getId())){
             throw new Exception("Não foi encontrado nenhum carro com o id"+carroDTO.getId());
         }
         Carro carro = new Carro();
         BeanUtils.copyProperties(carroDTO, carro);
-        return carroRepository.save(carro);
+        carroRepository.save(carro);
     }
 
 

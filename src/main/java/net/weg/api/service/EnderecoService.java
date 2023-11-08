@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class EnderecoService implements IService {
+public class EnderecoService {
 
     private EnderecoRepository enderecoRepository;
 

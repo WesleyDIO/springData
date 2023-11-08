@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class HabilitacaoService implements IService {
+public class HabilitacaoService {
 
     private HabilitacaoRepository habilitacaoRepository;
 
@@ -22,8 +22,8 @@ public class HabilitacaoService implements IService {
         habilitacaoRepository.deleteById(id);
     }
 
-    public Habilitacao buscarUm(Integer id){
-        return habilitacaoRepository.findById(id).get();
+    public void buscarUm(Integer id){
+         habilitacaoRepository.findById(id).get();
     }
 
     public List<Habilitacao> buscarTodos(){

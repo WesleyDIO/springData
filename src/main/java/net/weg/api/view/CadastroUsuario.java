@@ -44,6 +44,7 @@ public class CadastroUsuario extends PaginaPadrao<Cliente> {
 
 
     CadastroUsuario(UsuarioService usuarioService){
+        super();
         FormLayout formLayout = new FormLayout();
         this.setHorizontalComponentAlignment(
                 Alignment.CENTER,formLayout

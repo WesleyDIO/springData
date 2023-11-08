@@ -1,4 +1,4 @@
 package net.weg.api.model.dto;
 
-public interface IDTO<T> {
+public interface IDTO{
 }

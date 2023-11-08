@@ -46,7 +46,7 @@ public class CadastroSeguro extends Dialog {
                 SeguroCadastroDTO seguroCadastroDTO = new SeguroCadastroDTO(valor.getValue(),descricao.getValue(),valorFranquia.getValue(),seguradoraSelect.getValue()
                         ,veiculoSelect.getValue(),usuarioSelect.getValue());
                 try {
-                    seguroService.salvar(seguroCadastroDTO);
+                    seguroService.cadastrar(seguroCadastroDTO);
                 }catch (Exception e){
                     throw new RuntimeException(e);
                 }

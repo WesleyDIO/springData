@@ -20,7 +20,7 @@ public class CarroController {
     private CarroService carroService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Carro> buscarCarro(@PathVariable Integer id){
+    public ResponseEntity<Carro> buscarUm(@PathVariable Integer id){
         try {
             carroService.buscarUm(id);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -62,7 +62,7 @@ public class CarroController {
     }
 
     @PostMapping
-    public ResponseEntity<Carro> inserir(@RequestBody CarroCadastroDTO carroDTO){
+    public ResponseEntity<Carro> cadastrar(@RequestBody CarroCadastroDTO carroDTO){
         try{
             carroService.cadastrar(carroDTO);
             return new ResponseEntity<>( HttpStatus.CREATED);
@@ -72,9 +72,10 @@ public class CarroController {
     }
 
     @PutMapping
-    public ResponseEntity<Carro> atualizar(@RequestBody CarroEdicaoDTO carroDTO){
+    public ResponseEntity<Carro> editar(@RequestBody CarroEdicaoDTO carroDTO){
         try {
-            return new ResponseEntity<>(carroService.editar(carroDTO), HttpStatus.CREATED);
+            carroService.editar(carroDTO);
+            return new ResponseEntity<>( HttpStatus.CREATED);
         }catch (Exception e){
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

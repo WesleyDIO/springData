@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface IService<T,ID> {
 
-    void cadastrar(IDTO<?> dto) throws Exception;
+    void cadastrar(IDTO dto) throws Exception;
 
     void deletar(ID id);
 
-    T editar(IDTO<?> dto) throws Exception;
+    void editar(IDTO dto) throws Exception;
 
     void buscarUm(ID id);
 

@@ -29,12 +29,12 @@ public class UsuarioController {
     }
 
     @PostMapping()
-    public void inserir(@RequestBody UsuarioCadastroDTO usuarioCadastroDTO){
+    public void cadastrar(@RequestBody UsuarioCadastroDTO usuarioCadastroDTO){
         clienteService.cadastrar(usuarioCadastroDTO);
     }
 
     @PutMapping()
-    public void atualizar(@RequestBody UsuarioCadastroDTO usuarioCadastroDTO){
+    public void editar(@RequestBody UsuarioCadastroDTO usuarioCadastroDTO){
         clienteService.editar(usuarioCadastroDTO);
     }
 

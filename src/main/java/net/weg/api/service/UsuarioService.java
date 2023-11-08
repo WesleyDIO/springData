@@ -41,10 +41,10 @@ public class UsuarioService implements IService<Cliente,Integer> {
         clienteRepository.save(cliente);
     }
 
-    public Cliente editar(IDTO dto) {
+    public void editar(IDTO dto) {
         UsuarioCadastroDTO ucdto = (UsuarioCadastroDTO) dto;
         Cliente cliente = new Cliente();
         BeanUtils.copyProperties(ucdto,cliente);
-        return clienteRepository.save(cliente);
+        clienteRepository.save(cliente);
     }
 }
