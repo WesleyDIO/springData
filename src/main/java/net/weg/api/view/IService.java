@@ -10,7 +10,7 @@ public interface IService<T,ID> {
 
     void deletar(ID id);
 
-    void editar(IDTO<?> dto);
+    T editar(IDTO<?> dto) throws Exception;
 
     void buscarUm(ID id);
 

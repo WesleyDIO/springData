@@ -22,7 +22,8 @@ public class CarroController {
     @GetMapping("/{id}")
     public ResponseEntity<Carro> buscarCarro(@PathVariable Integer id){
         try {
-            return new ResponseEntity<>(carroService.buscarUm(id),HttpStatus.OK);
+            carroService.buscarUm(id);
+            return new ResponseEntity<>(HttpStatus.OK);
         }catch (NoSuchElementException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

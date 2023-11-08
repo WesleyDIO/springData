@@ -3,10 +3,11 @@ package net.weg.api.view;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dialog.Dialog;
 
 public class BotaoCancelar extends Button {
 
-    BotaoCancelar(ComponentEvent<ClickEvent<Button>>){
-        super("Cancelar", event-> );
+    BotaoCancelar(Dialog dialog){
+        super("Cancelar", event-> dialog.close());
     }
 }
