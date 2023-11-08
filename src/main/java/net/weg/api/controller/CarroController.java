@@ -63,7 +63,8 @@ public class CarroController {
     @PostMapping
     public ResponseEntity<Carro> inserir(@RequestBody CarroCadastroDTO carroDTO){
         try{
-            return new ResponseEntity<>(carroService.cadastrar(carroDTO), HttpStatus.CREATED);
+            carroService.cadastrar(carroDTO);
+            return new ResponseEntity<>( HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }

@@ -14,8 +14,6 @@ import net.weg.api.service.CarroService;
 @Route(value = "/meus-autos", layout = NavBarApp.class)
 public class MeusAutomoveis extends PaginaPadrao<Carro> {
 
-
-
     public MeusAutomoveis(CarroService carroService) {
         super("Meus Automóveis",carroService.buscarTodos(),Carro.class, new Button("Novo Carro", e -> new CadastroCarro(carroService).open()));
 

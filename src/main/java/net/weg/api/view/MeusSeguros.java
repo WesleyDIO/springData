@@ -16,20 +16,13 @@ import net.weg.api.service.SeguroService;
 import net.weg.api.service.UsuarioService;
 
 @Route( value = "/meus-seguros", layout = NavBarApp.class)
-public class MeusSeguros extends VerticalLayout{
+public class MeusSeguros extends PaginaPadrao<Seguro>{
 
     public MeusSeguros(SeguradoraService seguradoraService, CarroService carroService, UsuarioService usuarioService
             , SeguroService seguroService){
-        HorizontalLayout hl = new HorizontalLayout();
-        hl.add(new H1("Meus Seguros"));
-        Dialog cadastro = new Dialog();
-        cadastro.add(new CadastroSeguro(seguradoraService,carroService,usuarioService,seguroService,cadastro));
-        hl.add(new Button("Novo Seguro", e -> cadastro.open()));
-        add(hl);
-        Grid<Seguro> seguros = new Grid<>(Seguro.class);
-        seguros.setColumnOrder();
-        seguros.setItems(seguroService.buscarTodos());
-        add(seguros);
+        super("Meus Seguros", seguroService.buscarTodos(), Seguro.class,new Button("Novo Seguro", e -> new CadastroSeguro(seguradoraService,carroService,usuarioService,seguroService).open()));
+
+
 
     }
 }

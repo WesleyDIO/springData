@@ -5,6 +5,7 @@ import net.weg.api.model.dto.SeguroCadastroDTO;
 import net.weg.api.model.entity.Seguro;
 import net.weg.api.model.entity.SeguroId;
 import net.weg.api.repository.SeguroRepository;
+import net.weg.api.view.IService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class SeguroService {
+public class SeguroService implements IService {
     private SeguroRepository seguroRepository;
 
     public void salvar(SeguroCadastroDTO seguroCadastroDTO){

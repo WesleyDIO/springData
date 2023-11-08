@@ -14,15 +14,19 @@ import net.weg.api.service.CarroService;
 
 public class CadastroCarro extends Dialog {
 
+    private TextField placa = new TextField("placa");
+    private TextField marca = new TextField("marca");
+    private TextField cor = new TextField("cor");
+    private TextField modelo = new TextField("modelo");
+    private IntegerField ano = new IntegerField("ano");
+    private NumberField preco = new NumberField("preço");
+
+    private FormLayout formLayout = new FormLayout();
+
     private final CarroService carroService;
     CadastroCarro( CarroService carroService) {
         this.carroService = carroService;
-        TextField placa = new TextField("placa");
-        TextField marca = new TextField("marca");
-        TextField cor = new TextField("cor");
-        TextField modelo = new TextField("modelo");
-        IntegerField ano = new IntegerField("ano");
-        NumberField preco = new NumberField("preço");
+
         Button salvar = new Button("Salvar", new ComponentEventListener<ClickEvent<Button>>() {
             @Override
             public void onComponentEvent(ClickEvent<Button> buttonClickEvent) {
@@ -38,6 +42,7 @@ public class CadastroCarro extends Dialog {
         });
         Button cancelar = new Button("Cancelar", e -> this.close());
         this.getFooter().add(cancelar, salvar);
-        add(placa, marca, cor, modelo, ano, preco);
+        formLayout.add(placa, marca, cor, modelo, ano, preco);
+        this.add(formLayout);
     }
 }

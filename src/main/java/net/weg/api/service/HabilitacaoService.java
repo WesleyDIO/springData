@@ -3,13 +3,14 @@ package net.weg.api.service;
 import lombok.AllArgsConstructor;
 import net.weg.api.model.entity.Habilitacao;
 import net.weg.api.repository.HabilitacaoRepository;
+import net.weg.api.view.IService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class HabilitacaoService {
+public class HabilitacaoService implements IService {
 
     private HabilitacaoRepository habilitacaoRepository;
 

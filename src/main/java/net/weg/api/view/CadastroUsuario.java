@@ -16,6 +16,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import net.weg.api.model.dto.EnderecoCadastroDTO;
 import net.weg.api.model.dto.UsuarioCadastroDTO;
+import net.weg.api.model.entity.Cliente;
 import net.weg.api.model.entity.Endereco;
 import net.weg.api.service.UsuarioService;
 import org.springframework.beans.BeanUtils;
@@ -24,7 +25,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Route(value="/cadastro-usuario", layout = NavBarApp.class)
-public class CadastroUsuario extends VerticalLayout {
+public class CadastroUsuario extends PaginaPadrao<Cliente> {
 
     private TextField usuario = new TextField("Usuario");
     private TextField nome = new TextField("Nome");
@@ -64,7 +65,7 @@ public class CadastroUsuario extends VerticalLayout {
                     BeanUtils.copyProperties(enderecoCadastroDTO, endereco);
                     enderecos.add(endereco);
                 });
-                usuarioService.salvar(new UsuarioCadastroDTO(nome.getValue(), sobrenome.getValue(),usuario.getValue(), senha.getValue(), idade.getValue(), enderecos));
+                usuarioService.cadastrar(new UsuarioCadastroDTO(nome.getValue(), sobrenome.getValue(),usuario.getValue(), senha.getValue(), idade.getValue(), enderecos));
                 notification.setText("Usuario cadastrado com sucesso!");
                 notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
             }catch (Exception exception){

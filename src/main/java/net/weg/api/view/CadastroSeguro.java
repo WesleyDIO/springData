@@ -17,23 +17,26 @@ import net.weg.api.service.SeguradoraService;
 import net.weg.api.service.SeguroService;
 import net.weg.api.service.UsuarioService;
 
-public class CadastroSeguro extends FormLayout {
+public class CadastroSeguro extends Dialog {
+
+    private NumberField valor = new NumberField("Valor");
+    private TextField descricao = new TextField("Descrição");
+    private NumberField valorFranquia = new NumberField("Valor da Franquia");
+    private Select<Seguradora> seguradoraSelect = new Select<>();
+    private Select<Carro> veiculoSelect = new Select<>();
+    private Select<Cliente> usuarioSelect = new Select<>();
+
+    private FormLayout formLayout = new FormLayout();
 
     private SeguroService seguroService;
 
     CadastroSeguro(SeguradoraService seguradoraService, CarroService carroService, UsuarioService usuarioService
-    ,SeguroService seguroService,Dialog dialog){
+    ,SeguroService seguroService){
         this.seguroService = seguroService;
-        NumberField valor = new NumberField("Valor");
-        TextField descricao = new TextField("Descrição");
-        NumberField valorFranquia = new NumberField("Valor da Franquia");
-        Select<Seguradora> seguradoraSelect = new Select<>();
         seguradoraSelect.setLabel("Seguradora");
         seguradoraSelect.setItems(seguradoraService.buscarTodos());
-        Select<Carro> veiculoSelect = new Select<>();
         veiculoSelect.setLabel("Veículo");
         veiculoSelect.setItems(carroService.buscarTodos());
-        Select<Cliente> usuarioSelect = new Select<>();
 //        usuarioSelect.setItemLabelGenerator(item -> toString());
         usuarioSelect.setLabel("Usuário");
         usuarioSelect.setItems(usuarioService.buscarTodos());
@@ -47,11 +50,12 @@ public class CadastroSeguro extends FormLayout {
                 }catch (Exception e){
                     throw new RuntimeException(e);
                 }
-                dialog.close();
+                  close();
             }
         });
-        Button cancelar = new Button("Cancelar", e -> dialog.close());
-        dialog.getFooter().add(cancelar, salvar);
-        add(valor,descricao,valorFranquia,veiculoSelect,seguradoraSelect,usuarioSelect);
+        Button cancelar = new Button("Cancelar", e -> this.close());
+        this.getFooter().add(cancelar, salvar);
+        formLayout.add(valor,descricao,valorFranquia,veiculoSelect,seguradoraSelect,usuarioSelect);
+        add(formLayout);
     }
 }

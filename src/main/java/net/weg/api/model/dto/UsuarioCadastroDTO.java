@@ -7,7 +7,7 @@ import net.weg.api.model.entity.Endereco;
 import java.util.Set;
 @AllArgsConstructor
 @Data
-public class UsuarioCadastroDTO {
+public class UsuarioCadastroDTO implements  IDTO{
     private String nome;
     private String sobrenome;
     private String usuario;

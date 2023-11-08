@@ -3,13 +3,14 @@ package net.weg.api.service;
 import lombok.AllArgsConstructor;
 import net.weg.api.model.entity.Endereco;
 import net.weg.api.repository.EnderecoRepository;
+import net.weg.api.view.IService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class EnderecoService {
+public class EnderecoService implements IService {
 
     private EnderecoRepository enderecoRepository;
 

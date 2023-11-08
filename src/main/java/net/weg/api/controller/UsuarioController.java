@@ -15,8 +15,8 @@ public class UsuarioController {
     private UsuarioService clienteService;
 
     @GetMapping("/{id}")
-    public Cliente buscarUm(@PathVariable Integer id){
-        return clienteService.buscarUm(id);
+    public void buscarUm(@PathVariable Integer id){
+        clienteService.buscarUm(id);
     }
 
     @GetMapping()
@@ -30,12 +30,12 @@ public class UsuarioController {
 
     @PostMapping()
     public void inserir(@RequestBody UsuarioCadastroDTO usuarioCadastroDTO){
-        clienteService.salvar(usuarioCadastroDTO);
+        clienteService.cadastrar(usuarioCadastroDTO);
     }
 
     @PutMapping()
     public void atualizar(@RequestBody UsuarioCadastroDTO usuarioCadastroDTO){
-        clienteService.salvar(usuarioCadastroDTO);
+        clienteService.editar(usuarioCadastroDTO);
     }
 
 

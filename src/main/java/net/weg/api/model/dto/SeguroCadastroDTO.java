@@ -8,7 +8,7 @@ import net.weg.api.model.entity.Seguradora;
 
 @AllArgsConstructor
 @Data
-public class SeguroCadastroDTO {
+public class SeguroCadastroDTO implements  IDTO{
     private Double valor;
     private String descricao;
     private Double valorFranquia;
