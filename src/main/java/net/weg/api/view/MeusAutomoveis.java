@@ -15,7 +15,15 @@ import net.weg.api.service.CarroService;
 public class MeusAutomoveis extends PaginaPadrao<Carro> {
 
     public MeusAutomoveis(CarroService carroService) {
-        super("Meus Automóveis",carroService.buscarTodos(),Carro.class, new Button("Novo Carro", e -> new CadastroCarro(carroService).open()));
+        super("Meus automóveis",
+                carroService.buscarTodos(),
+                Carro.class,
+                new Button("Novo Carro", e -> new Modal(
+                        new CadastroCarro(carroService)
+//                        ,new BotaoSalvar(),
+//                        new BotaoCancelar()
+                ).open()));
+
 
 
     }
